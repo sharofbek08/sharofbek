@@ -1,0 +1,12 @@
+node_modules/
+dist/
+.env
+.venv/
+.firebase/
+__pycache__/
+*.log
+.DS_Store
+/.vscode/
+.idea/
+/*.pyc
+/.python-version

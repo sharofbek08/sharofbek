@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="She'rlar va qalbdagi so'zlarni saqlash uchun shaxsiy sahifa." />
+  <title>Satrlarim — so‘zlar sandig‘i</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="assets/logo1.svg" type="image/svg+xml" />
+</head>
+<body>
+  <div class="site-wrap">
+    <header class="topbar">
+      <a class="brand" href="#top" aria-label="Satrlarim bosh sahifasi">
+        <img id="brand-logo" src="assets/logo1.svg" alt="logo" width="44" height="44" style="border-radius:8px; vertical-align:middle; margin-right:8px;" />
+        <span>
+          <span class="brand-name">Mening</span>
+          <span class="brand-subtitle">So‘zlar sandig‘im</span>
+        </span>
+      </a>
+      <div class="quiet-note" id="sync-status" role="status">
+        <span class="status-dot" aria-hidden="true"></span>
+        <span id="sync-status-text">Yozuvlar shu qurilmada saqlanadi</span>
+      </div>
+      <div class="auth">
+        <div id="g_id_signin"></div>
+        <div id="user-info" hidden>
+          <img id="user-pic" alt="" style="width:32px;height:32px;border-radius:50%;vertical-align:middle;margin-right:8px;" hidden />
+          <span id="user-name"></span>
+          <button id="signout-button" type="button">Chiqish</button>
+        </div>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-glow" aria-hidden="true"></div>
+        <div class="hero-birds" aria-hidden="true">
+          <span class="hero-bird bird-one">
+            <svg viewBox="0 0 48 28" focusable="false"><path d="M2 20C8 10 14 10 21 20c5-12 13-12 24-1"/></svg>
+          </span>
+          <span class="hero-bird bird-two">
+            <svg viewBox="0 0 48 28" focusable="false"><path d="M2 20C8 10 14 10 21 20c5-12 13-12 24-1"/></svg>
+          </span>
+          <span class="hero-bird bird-three">
+            <svg viewBox="0 0 48 28" focusable="false"><path d="M2 20C8 10 14 10 21 20c5-12 13-12 24-1"/></svg>
+          </span>
+        </div>
+        <div class="hero-content">
+        <p class="eyebrow">Shaxsiy kutubxonangiz</p>
+        <h1 id="hero-title">Yurakka yaqin so‘zlar bir joyda.</h1>
+        <p class="hero-copy">Sevimli she’rlaringiz, qalbdagi so'zlaringiz va o‘zingiz yozgan satrlarni yig‘ib boring. Har bir so‘z — alohida xotira.</p>
+        <div class="hero-actions">
+          <button class="button button-primary" type="button" id="open-add-dialog">
+            <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+            Yangi yozuv qo‘shish
+          </button>
+          <a class="button button-ghost" href="#yozuvlar">Yozuvlarni ko‘rish</a>
+        </div>
+        </div>
+      </section>
+
+      <div class="content-grid">
+        <section class="main-column" id="yozuvlar" aria-labelledby="entries-title">
+          <div class="search-row">
+            <label class="search-box">
+              <span class="sr-only">Yozuvlarni qidirish</span>
+              <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4 4"/></svg>
+              <input id="search-input" type="search" placeholder="So‘z, muallif yoki teg bo‘yicha qidiring…" autocomplete="off" />
+            </label>
+            <button class="button button-secondary" type="button" id="open-add-dialog-secondary">+ Qo‘shish</button>
+          </div>
+
+          <div class="filter-bar" role="toolbar" aria-label="Yozuvlarni saralash">
+            <button class="filter-chip is-active" type="button" data-filter="all" aria-pressed="true">Barchasi</button>
+            <button class="filter-chip" type="button" data-filter="poem" aria-pressed="false">She’rlar</button>
+            <button class="filter-chip" type="button" data-filter="quote" aria-pressed="false">Qalbdagi so'zlar</button>
+            <button class="filter-chip" type="button" data-filter="favorite" aria-pressed="false">Sevimlilar</button>
+          </div>
+
+          <div class="section-heading">
+            <h2 id="entries-title">Saqlangan yozuvlar</h2>
+            <span class="entry-count" id="entry-count" aria-live="polite"></span>
+          </div>
+          <div class="entry-list" id="entry-list"></div>
+        </section>
+
+        <aside class="side-column" aria-label="Kutubxona haqida">
+          <section class="side-card" aria-labelledby="stats-title">
+            <h2 id="stats-title">Sizning sandiq</h2>
+            <div class="stat-list">
+              <div class="stat-row"><span class="stat-name">Jami yozuvlar</span><strong class="stat-value" id="total-count">0</strong></div>
+              <div class="stat-row"><span class="stat-name">She’rlar</span><strong class="stat-value" id="poem-count">0</strong></div>
+              <div class="stat-row"><span class="stat-name">Sevimlilar</span><strong class="stat-value" id="favorite-count">0</strong></div>
+            </div>
+          </section>
+          <section class="side-card memory-card" aria-labelledby="memory-title">
+            <h2 id="memory-title">Kichik eslatma</h2>
+            <span class="line" aria-hidden="true"></span>
+            <p id="storage-note">Yozuvlaringiz brauzer xotirasida saqlanadi. Bulutli sinxronlash yoqilganda ular barcha qurilmalarda ham ko‘rinadi.</p>
+          </section>
+        </aside>
+      </div>
+    </main>
+
+    <footer>Bir satr ham ba’zan butun bir kunni o‘zgartiradi.</footer>
+  </div>
+
+  <dialog id="entry-dialog" aria-labelledby="dialog-title">
+    <div class="dialog-inner">
+      <div class="dialog-heading">
+        <div>
+          <h2 id="dialog-title">Yangi yozuv</h2>
+          <p id="dialog-description">Yuragingizga yaqin satrni saqlab qo‘ying.</p>
+        </div>
+        <button class="close-button" type="button" id="close-dialog" aria-label="Oynani yopish">×</button>
+      </div>
+      <form id="entry-form" novalidate>
+        <input id="editing-id" type="hidden" />
+        <div class="form-grid">
+          <fieldset class="field" style="border:0; padding:0; margin:0;">
+            <legend class="field-title">Yozuv turi</legend>
+            <div class="type-options">
+              <label class="type-option"><input type="radio" name="entry-type" value="poem" checked /> She’r</label>
+              <label class="type-option"><input type="radio" name="entry-type" value="quote" /> Qalbdagi so'zlar</label>
+            </div>
+          </fieldset>
+          <div class="field">
+            <label for="entry-text">Matn</label>
+            <textarea id="entry-text" required maxlength="3000" placeholder="Bu yerga she’r yoki gapni yozing…"></textarea>
+          </div>
+          <div class="field">
+            <label for="entry-author">Muallif <span style="font-weight:400; color:#776d65;">(ixtiyoriy)</span></label>
+            <input id="entry-author" type="text" maxlength="100" placeholder="Masalan: Abdulla Oripov" />
+          </div>
+          <div class="field">
+            <label for="entry-tags">Teglar <span style="font-weight:400; color:#776d65;">(vergul bilan ajrating)</span></label>
+            <input id="entry-tags" type="text" maxlength="160" placeholder="muhabbat, sog‘inch, hayot" />
+          </div>
+          <label class="protect-option" for="entry-protected">
+            <input id="entry-protected" type="checkbox" />
+            <span>Matnni maxfiy kod bilan himoyalash</span>
+          </label>
+          <div class="protected-fields" id="protected-fields" hidden>
+            <div class="field">
+              <label for="entry-passphrase">Maxfiy kod</label>
+              <input id="entry-passphrase" type="password" minlength="8" maxlength="128" autocomplete="new-password" placeholder="Kamida 8 belgi" />
+            </div>
+            <div class="field">
+              <label for="entry-passphrase-confirm">Kodni takrorlang</label>
+              <input id="entry-passphrase-confirm" type="password" minlength="8" maxlength="128" autocomplete="new-password" />
+            </div>
+            <p class="field-hint">Matn, muallif va teglar shifrlanadi. Kod unutilsa, ularni tiklab bo‘lmaydi.</p>
+          </div>
+          <p class="form-error" id="form-error" aria-live="polite"></p>
+          <div class="form-actions">
+            <button class="button button-secondary" type="button" id="cancel-dialog">Bekor qilish</button>
+            <button class="button button-primary" type="submit" id="save-entry">Saqlash</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </dialog>
+
+  <dialog id="unlock-dialog" aria-labelledby="unlock-dialog-title">
+    <div class="dialog-inner">
+      <div class="dialog-heading">
+        <div>
+          <h2 id="unlock-dialog-title">Kodli yozuv</h2>
+          <p>Matnni o‘qish uchun maxfiy kodni kiriting.</p>
+        </div>
+        <button class="close-button" type="button" id="close-unlock-dialog" aria-label="Oynani yopish">×</button>
+      </div>
+      <form id="unlock-form">
+        <div class="form-grid">
+          <div class="field">
+            <label for="unlock-passphrase">Maxfiy kod</label>
+            <input id="unlock-passphrase" type="password" required autocomplete="off" />
+          </div>
+          <p class="form-error" id="unlock-error" aria-live="polite"></p>
+          <div class="form-actions">
+            <button class="button button-secondary" type="button" id="cancel-unlock-dialog">Bekor qilish</button>
+            <button class="button button-primary" type="submit" id="unlock-submit">Ochish</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </dialog>
+
+  <dialog id="logo-dialog" aria-labelledby="logo-dialog-title">
+    <div class="dialog-inner">
+      <div class="dialog-heading">
+        <div>
+          <h2 id="logo-dialog-title">Logotip tanlash</h2>
+          <p>Quyidagi variantlardan birini tanlang.</p>
+        </div>
+        <button class="close-button" type="button" id="close-logo-dialog" aria-label="Oynani yopish">×</button>
+      </div>
+      <div style="display:flex;gap:12px;padding:12px;justify-content:center;">
+        <button class="logo-option" data-src="assets/logo1.svg" style="border:0;background:transparent;padding:0"><img src="assets/logo1.svg" width="64" height="64" alt="logo 1"></button>
+        <button class="logo-option" data-src="assets/logo2.svg" style="border:0;background:transparent;padding:0"><img src="assets/logo2.svg" width="64" height="64" alt="logo 2"></button>
+        <button class="logo-option" data-src="assets/logo3.svg" style="border:0;background:transparent;padding:0"><img src="assets/logo3.svg" width="64" height="64" alt="logo 3"></button>
+      </div>
+    </div>
+  </dialog>
+
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
+  <script src="firebase-config.js"></script>
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <script src="app.js"></script>
+</body>
+</html>
